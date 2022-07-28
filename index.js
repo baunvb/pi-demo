@@ -10,7 +10,7 @@ Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
   console.error(error);
 });
 
-function callPayment() {
+function donate() {
     alert("Payment")
     Pi.createPayment({
         // Amount of π to be paid:
@@ -19,7 +19,7 @@ function callPayment() {
         memo: "Donate Pi", // e.g: "Digital kitten #1234",
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
-          kittenId: 
+          kittenId: 'abcd'
          }, // e.g: { kittenId: 1234 }
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
