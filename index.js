@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 // Authenticate the user, and get permission to request payments from them:
 const scopes = ['payments'];
 
@@ -11,23 +13,45 @@ Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
 });
 
 function donate() {
-    alert("Payment")
+  var amount = document.getElementById("amount").value;
+  var address = document.getElementById("address").value;
     Pi.createPayment({
         // Amount of π to be paid:
-        amount: 3.14,
+        amount: parseFloat(amount),
         // An explanation of the payment - will be shown to the user:
-        memo: "Donate Pi", // e.g: "Digital kitten #1234",
+        memo: address,
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
-          kittenId: 'abcd'
+          kittenId: 'g2222s'
          }, // e.g: { kittenId: 1234 }
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) { 
-            alert(`onReadyForServerApproval paymentId: ${paymentId}`)
+          axios.post(`https://api.minepi.com/v2//payments/${paymentId}/approve`, {
+            headers: {
+              Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
          },
-        onReadyForServerCompletion: function(paymentId, txid) { 
-            alert(`onReadyForServerCompletion paymentId: ${paymentId}, txId: ${txid}`)
+        onReadyForServerCompletion: function(paymentId, txid) {
+          alert(txid)
+          axios.post(`https://api.minepi.com/v2//payments/${paymentId}/complete`, {
+            headers: {
+              Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
          },
         onCancel: function(paymentId) { 
             alert(`onCancel paymentId: ${paymentId}`)
