@@ -31,7 +31,7 @@ function donate() {
         // Amount of π to be paid:
         amount: parseFloat(amount),
         // An explanation of the payment - will be shown to the user:
-        memo: "address",
+        memo: address,
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
           kittenId: 1234
