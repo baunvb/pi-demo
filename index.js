@@ -1,7 +1,7 @@
-// const axios = require('axios');
+const axios = require('axios');
 
 // Authenticate the user, and get permission to request payments from them:
-const scopes = ['payments'];
+const scopes = ['username', 'payments'];
 
 // Read more about this callback in the SDK reference:
 function onIncompletePaymentFound(payment) { /* ... */ };
@@ -11,6 +11,20 @@ Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
 }).catch(function(error) {
   console.error(error);
 });
+
+const axiosClient = axios.create({
+  baseURL: "https://api.minepi.com/v2",
+  timeout: 30000
+})
+
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': "Bearer m0zq8wffvvqbkvwpdiasqtrsgwmak3yei41sgu9j8hhccdutlh7utjh7mqtbaito"
+
+  }
+}
 
 function donate() {
   var amount = document.getElementById("amount").value;
@@ -29,17 +43,13 @@ function donate() {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) { 
           alert(paymentId)
-          // axios.post(`https://api.minepi.com/v2//payments/${paymentId}/approve`, {
-          //   headers: {
-          //     Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
-          //   }
-          // })
-          // .then(function (response) {
-          //   console.log(response);
-          // })
-          // .catch(function (error) {
-          //   console.log(error);
-          // });
+          axios.post(`/payments/${paymentId}/approve`)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
          },
         onReadyForServerCompletion: function(paymentId, txid) {
           alert(txid)
