@@ -15,14 +15,15 @@ Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
 function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
+  console.log({amount, address})
     Pi.createPayment({
         // Amount of π to be paid:
         amount: parseFloat(amount),
         // An explanation of the payment - will be shown to the user:
-        memo: address,
+        memo: "address",
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
-          kittenId: 'g2222s'
+          kittenId: 1234
          }, // e.g: { kittenId: 1234 }
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
