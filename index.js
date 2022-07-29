@@ -50,7 +50,9 @@ function donate() {
         },
         onReadyForServerCompletion: function(paymentId, txid) {
           console.log(txid)
-          axiosClient.post(`/payments/${paymentId}/complete`, config, {})
+          axiosClient.post(`/payments/${paymentId}/complete`, config, {
+            txid: txid
+          })
           .then(function (response) {
             console.log(response);
           })
