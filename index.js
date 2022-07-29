@@ -27,6 +27,7 @@ function donate() {
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) { 
+          alert(paymentId)
           axios.post(`https://api.minepi.com/v2//payments/${paymentId}/approve`, {
             headers: {
               Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
