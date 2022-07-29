@@ -20,7 +20,7 @@ function donate() {
         memo: address,
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
-          note: address
+          bsc_address: address
          },
          to: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
       }, {
