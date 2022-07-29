@@ -1,4 +1,4 @@
-const axios = require('axios');
+// const axios = require('axios');
 
 // Authenticate the user, and get permission to request payments from them:
 const scopes = ['payments'];
@@ -28,31 +28,31 @@ function donate() {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) { 
           alert(paymentId)
-          axios.post(`https://api.minepi.com/v2//payments/${paymentId}/approve`, {
-            headers: {
-              Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
-            }
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          // axios.post(`https://api.minepi.com/v2//payments/${paymentId}/approve`, {
+          //   headers: {
+          //     Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
+          //   }
+          // })
+          // .then(function (response) {
+          //   console.log(response);
+          // })
+          // .catch(function (error) {
+          //   console.log(error);
+          // });
          },
         onReadyForServerCompletion: function(paymentId, txid) {
           alert(txid)
-          axios.post(`https://api.minepi.com/v2//payments/${paymentId}/complete`, {
-            headers: {
-              Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
-            }
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          // axios.post(`https://api.minepi.com/v2//payments/${paymentId}/complete`, {
+          //   headers: {
+          //     Authorization: "Bearer gndpmaoidgou4sq7wz4hrzcxsker6zerqnkpnvvfgaeud5k3zrp150dksszan9qd"
+          //   }
+          // })
+          // .then(function (response) {
+          //   console.log(response);
+          // })
+          // .catch(function (error) {
+          //   console.log(error);
+          // });
          },
         onCancel: function(paymentId) { 
             alert(`onCancel paymentId: ${paymentId}`)
