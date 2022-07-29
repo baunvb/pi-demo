@@ -22,7 +22,7 @@ function donate() {
         metadata: { 
           note: address
          },
-         to_address: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
+         to: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
