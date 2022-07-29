@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // Authenticate the user, and get permission to request payments from them:
 var scopes = ['username', 'payments'];
 
