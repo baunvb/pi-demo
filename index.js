@@ -19,7 +19,7 @@ var config = {
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Authorization': "Bearer m0zq8wffvvqbkvwpdiasqtrsgwmak3yei41sgu9j8hhccdutlh7utjh7mqtbaito"
+    'Authorization': "Key m0zq8wffvvqbkvwpdiasqtrsgwmak3yei41sgu9j8hhccdutlh7utjh7mqtbaito"
   }
 }
 
