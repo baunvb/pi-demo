@@ -20,9 +20,9 @@ function donate() {
         memo: address,
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
-          kittenId: 1234
+          note: address
          },
-         to: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
+         to_address: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
