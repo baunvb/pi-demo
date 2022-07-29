@@ -5,23 +5,9 @@ var scopes = ['username', 'payments'];
 function onIncompletePaymentFound(payment) { /* ... */ };
 
 Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
-  alert(`Hi there! You're ready to make payments!`);
 }).catch(function(error) {
   console.error(error);
 });
-
-var axiosClient = axios.create({
-  baseURL: "https://api.minepi.com/v2",
-  timeout: 30000
-})
-
-var config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Authorization': "Key m0zq8wffvvqbkvwpdiasqtrsgwmak3yei41sgu9j8hhccdutlh7utjh7mqtbaito"
-  }
-}
 
 function donate() {
   var amount = document.getElementById("amount").value;
@@ -35,7 +21,8 @@ function donate() {
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
           kittenId: 1234
-         }, // e.g: { kittenId: 1234 }
+         },
+         to: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
@@ -49,7 +36,7 @@ function donate() {
           });
         },
         onReadyForServerCompletion: function(paymentId, txid) {
-          console.log(txid)
+          alert(txid)
           axiosClient.post(`/payments/${paymentId}/complete`, config, {
             txid: txid
           })
