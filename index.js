@@ -1,4 +1,4 @@
-var axios = require('axios');
+import axios from 'axios';
 
 // Authenticate the user, and get permission to request payments from them:
 var scopes = ['username', 'payments'];
@@ -22,7 +22,6 @@ var config = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Authorization': "Bearer m0zq8wffvvqbkvwpdiasqtrsgwmak3yei41sgu9j8hhccdutlh7utjh7mqtbaito"
-
   }
 }
 
