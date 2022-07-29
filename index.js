@@ -1,4 +1,3 @@
-const axios = require('axios')
 // Authenticate the user, and get permission to request payments from them:
 var scopes = ['username', 'payments'];
 
