@@ -9,6 +9,18 @@ Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
   console.error(error);
 });
 
+var axiosClient = axios.create({
+  baseURL: "https://pipi-server.herokuapp.com/api",
+  timeout: 30000
+})
+
+var config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  }
+}
+
 function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
@@ -21,12 +33,10 @@ function donate() {
         // An arbitrary developer-provided metadata object - for your own usage:
         metadata: { 
           bsc_address: address
-         },
-         to: "GA7LSYWSB5VPYQTJYJ5H3OCKUQXCJOXARFY5BWZ6OMJRVBUJFKK66VTH"
+         }
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
-          alert(paymentId)
           axiosClient.post(`/payments/${paymentId}/approve`, config, {})
           .then(function (response) {
             console.log(response);
@@ -36,7 +46,6 @@ function donate() {
           });
         },
         onReadyForServerCompletion: function(paymentId, txid) {
-          alert(txid)
           axiosClient.post(`/payments/${paymentId}/complete`, config, {
             txid: txid
           })
