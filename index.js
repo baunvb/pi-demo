@@ -37,6 +37,7 @@ function donate() {
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
+          console.log({paymentId})
           axiosClient.post(`/payments/${paymentId}/approve`, config, {})
           .then(function (response) {
             console.log(response);
@@ -46,6 +47,7 @@ function donate() {
           });
         },
         onReadyForServerCompletion: function(paymentId, txid) {
+          console.log({paymentId, txid})
           axiosClient.post(`/payments/${paymentId}/complete`, config, {
             txid: txid
           })
