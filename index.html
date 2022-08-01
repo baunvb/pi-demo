@@ -26,9 +26,20 @@
                 <input value="0.5" type="text" class="form-control" id="amount" placeholder="0.0">
             </div>
             <label for="address" class="form-label text-light">Address</label>
-            <div class="input-group mb-3">
+            <div class="input-group">
                 <input type="text" class="form-control" id="address" placeholder="address" onchange="showWarning()">
-                <span class="input-group-text">
+                <button class="btn btn-outline-secondary" type="button" onclick="paste()">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-clipboard" viewBox="0 0 16 16">
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                            <path
+                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                        </svg>
+                    </span>
+                </button>
+                <button class="btn btn-outline-secondary" type="button">
                     <input class="transparent-input" type="file" id="qr-input-file" accept="image/*" capture>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-qr-code-scan" viewBox="0 0 16 16">
@@ -40,11 +51,13 @@
                             d="M9 2h5v5H9V2Zm1 1v3h3V3h-3ZM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8H8Zm2 2H9V9h1v1Zm4 2h-1v1h-2v1h3v-2Zm-4 2v-1H8v1h2Z" />
                         <path d="M12 9h2V8h-2v1Z" />
                     </svg>
-                </span>
-                <span style="display: none;" id="warning" class="text-danger fs-6">The address format is wrong. Please
-                    check the address length and character content and try again</span>
+                </button>
             </div>
-            <div class="mb-3 d-grid">
+
+            <span style="display: none;" id="warning" class="text-danger fs-6">The address format is wrong. Please
+                check the address length and character content and try again</span>
+
+            <div class="mb-3 d-grid btn-transfer">
                 <button onclick="donate()" type="button" class="btn btn-primary">Transfer</button>
             </div>
             <div id="reader" width="0px" class="d-none"></div>

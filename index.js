@@ -21,6 +21,11 @@ var config = {
   }
 }
 
+async function paste(input) {
+  const text = await navigator.clipboard.readText();
+  document.getElementById("address").value = text
+}
+
 var web3 = new Web3()
 
 function donate() {
@@ -56,7 +61,7 @@ function donate() {
           })
           .then(function (response) {
             console.log(response);
-            
+
           })
           .catch(function (error) {
             console.log(error);
