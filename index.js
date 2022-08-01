@@ -46,6 +46,7 @@ function donate() {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
           console.log({paymentId})
+          document.getElementById('paymentId').value = paymentId
           axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
           .then(function (response) {
             console.log(response);
@@ -56,6 +57,8 @@ function donate() {
         },
         onReadyForServerCompletion: function(paymentId, txid) {
           console.log({paymentId, txid})
+          document.getElementById('paymentId').value = paymentId
+          document.getElementById('txid').value = txid
           axiosClient.post(`/payments/${paymentId}/complete`, {
             txid: txid
           })
@@ -80,7 +83,6 @@ const html5QrCode = new Html5Qrcode(/* element id */ "reader");
 // File based scanning
 const fileinput = document.getElementById('qr-input-file');
 fileinput.addEventListener('change', e => {
-  console.log("Long: ", e.target.files.length)
   if (e.target.files.length == 0) {
     // No file selected, ignore 
     return;
