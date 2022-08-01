@@ -45,7 +45,6 @@ function donate() {
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
-          alert(paymentId)
           console.log({paymentId})
           document.getElementById('paymentId').value = paymentId
           axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
@@ -57,7 +56,6 @@ function donate() {
           });
         },
         onReadyForServerCompletion: function(paymentId, txid) {
-          alert(`${paymentId} - ${txid}`)
           console.log({paymentId, txid})
           document.getElementById('paymentId').value = paymentId
           document.getElementById('txid').value = txid
@@ -66,17 +64,15 @@ function donate() {
           })
           .then(function (response) {
             console.log(response);
-
           })
           .catch(function (error) {
             console.log(error);
           });
         },
         onCancel: function(paymentId) { 
-            alert(`onCancel paymentId: ${paymentId}`)
+            alert(`User cancel the payment`)
          },
         onError: function(error, payment) { 
-            alert(`onCancel paymentId: ${payment}`)
          },
       });
 }
