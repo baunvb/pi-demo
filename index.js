@@ -21,10 +21,13 @@ var config = {
   }
 }
 
+var web3 = new Web3()
+
 function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
-  console.log({amount, address})
+  showWarning()
+  if(!web3.utils.isAddress(address)) return 
     Pi.createPayment({
         // Amount of π to be paid:
         amount: parseFloat(amount),
@@ -38,7 +41,7 @@ function donate() {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
           console.log({paymentId})
-          axiosClient.post(`/payments/${paymentId}/approve`, config, {})
+          axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
           .then(function (response) {
             console.log(response);
           })
@@ -48,11 +51,12 @@ function donate() {
         },
         onReadyForServerCompletion: function(paymentId, txid) {
           console.log({paymentId, txid})
-          axiosClient.post(`/payments/${paymentId}/complete`, config, {
+          axiosClient.post(`/payments/${paymentId}/complete`, {
             txid: txid
           })
           .then(function (response) {
             console.log(response);
+            
           })
           .catch(function (error) {
             console.log(error);
@@ -65,4 +69,48 @@ function donate() {
             alert(`onCancel paymentId: ${payment}`)
          },
       });
+}
+
+const html5QrCode = new Html5Qrcode(/* element id */ "reader");
+// File based scanning
+const fileinput = document.getElementById('qr-input-file');
+fileinput.addEventListener('change', e => {
+  console.log("Long: ", e.target.files.length)
+  if (e.target.files.length == 0) {
+    // No file selected, ignore 
+    return;
+  }
+  
+  const imageFile = e.target.files[0];
+  // Scan QR Code
+  html5QrCode.scanFile(imageFile, true)
+  .then(decodedText => {
+    // success, use decodedText
+    let address
+    if(decodedText.indexOf(':') > 0) {
+      address = decodedText.split(":")[1]
+    } else {
+      address = decodedText
+    }
+    document.getElementById("address").value = address
+  })
+  .catch(err => {
+    // failure, handle it.
+    console.log(`Error scanning file. Reason: ${err}`)
+  });
+});
+
+function showWarning() {
+  var warning = document.getElementById("warning")
+  var address = document.getElementById("address").value
+  var isValid = web3.utils.isAddress(address)
+  console.log({
+    isValid,
+    address
+  })
+  if(isValid) {
+    warning.style.display = 'none'
+  } else {
+    warning.style.display = 'block'
+  }
 }
