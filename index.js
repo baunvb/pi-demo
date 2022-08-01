@@ -70,7 +70,7 @@ function donate() {
           });
         },
         onCancel: function(paymentId) { 
-            alert(`User cancel the payment`)
+            alert(`User cancelled the payment`)
          },
         onError: function(error, payment) { 
          },
