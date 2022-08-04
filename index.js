@@ -44,8 +44,9 @@ function donate() {
          }
       }, {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
-        onReadyForServerApproval: function(paymentId) {
+        onReadyForServerApproval: async function(paymentId) {
           alert(paymentId)
+          console.log("HEHEHEE", await axiosClient.get(`/payments/${paymentId}`))
           console.log({paymentId})
           axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
           .then(function (response) {
