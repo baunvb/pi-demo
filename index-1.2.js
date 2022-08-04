@@ -34,48 +34,53 @@ function donate() {
   // showWarning()
   alert("Start")
   // if(!web3.utils.isAddress(address)) return 
+  try {
     Pi.createPayment({
-        // Amount of π to be paid:
-        amount: parseFloat(amount),
-        // An explanation of the payment - will be shown to the user:
-        memo: address,
-        // An arbitrary developer-provided metadata object - for your own usage:
-        metadata: { 
-          bsc_address: address
-         }
-      }, {
-        // Callbacks you need to implement - read more about those in the detailed docs linked below:
-        onReadyForServerApproval: async function(paymentId) {
-          alert(paymentId)
-          console.log("HEHEHEE", await axiosClient.get(`/payments/${paymentId}`))
-          console.log({paymentId})
-          axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        },
-        onReadyForServerCompletion: function(paymentId, txid) {
-          alert(txid)
-          console.log({paymentId, txid})
-          axiosClient.post(`/payments/${paymentId}/complete`, {
-            txid: txid
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        },
-        onCancel: function(paymentId) { 
-            alert(`User cancelled the payment`)
-         },
-        onError: function(error, payment) { 
-         },
-      });
+      // Amount of π to be paid:
+      amount: parseFloat(amount),
+      // An explanation of the payment - will be shown to the user:
+      memo: address,
+      // An arbitrary developer-provided metadata object - for your own usage:
+      metadata: { 
+        bsc_address: address
+       }
+    }, {
+      // Callbacks you need to implement - read more about those in the detailed docs linked below:
+      onReadyForServerApproval: async function(paymentId) {
+        alert(paymentId)
+        console.log("HEHEHEE", await axiosClient.get(`/payments/${paymentId}`))
+        console.log({paymentId})
+        axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      },
+      onReadyForServerCompletion: function(paymentId, txid) {
+        alert(txid)
+        console.log({paymentId, txid})
+        axiosClient.post(`/payments/${paymentId}/complete`, {
+          txid: txid
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      },
+      onCancel: function(paymentId) { 
+          alert(`User cancelled the payment`)
+       },
+      onError: function(error, payment) { 
+       },
+    });
+  } catch (err) {
+    alert(err)
+  }
+    
 }
 
 const html5QrCode = new Html5Qrcode(/* element id */ "reader");
