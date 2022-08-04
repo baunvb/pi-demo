@@ -1,5 +1,5 @@
 // Authenticate the user, and get permission to request payments from them:
-var scopes = ['username', 'payments'];
+var scopes = ['payments'];
 
 // Read more about this callback in the SDK reference:
 function onIncompletePaymentFound(payment) { /* ... */ };
