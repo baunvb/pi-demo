@@ -47,7 +47,6 @@ function donate() {
         onReadyForServerApproval: function(paymentId) {
           alert(paymentId)
           console.log({paymentId})
-          document.getElementById('paymentId').value = paymentId
           axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
           .then(function (response) {
             console.log(response);
@@ -59,8 +58,6 @@ function donate() {
         onReadyForServerCompletion: function(paymentId, txid) {
           alert(txid)
           console.log({paymentId, txid})
-          document.getElementById('paymentId').value = paymentId
-          document.getElementById('txid').value = txid
           axiosClient.post(`/payments/${paymentId}/complete`, {
             txid: txid
           })
