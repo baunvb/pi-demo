@@ -32,6 +32,7 @@ function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
   showWarning()
+  alert("Start")
   // if(!web3.utils.isAddress(address)) return 
     Pi.createPayment({
         // Amount of π to be paid:
