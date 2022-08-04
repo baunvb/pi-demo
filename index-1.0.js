@@ -31,7 +31,7 @@ var web3 = new Web3()
 function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
-  // showWarning()
+  showWarning()
   alert("Start")
   // if(!web3.utils.isAddress(address)) return 
     Pi.createPayment({
