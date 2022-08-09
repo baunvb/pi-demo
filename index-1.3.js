@@ -31,9 +31,8 @@ var web3 = new Web3()
 function donate() {
   var amount = document.getElementById("amount").value;
   var address = document.getElementById("address").value;
-  // showWarning()
-  alert("Start")
-  // if(!web3.utils.isAddress(address)) return 
+  showWarning()
+  if(!web3.utils.isAddress(address)) return 
   try {
     Pi.createPayment({
       // Amount of π to be paid:
@@ -47,7 +46,6 @@ function donate() {
     }, {
       // Callbacks you need to implement - read more about those in the detailed docs linked below:
       onReadyForServerApproval: async function(paymentId) {
-        alert(paymentId)
         console.log("HEHEHEE", await axiosClient.get(`/payments/${paymentId}`))
         console.log({paymentId})
         axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
@@ -59,7 +57,6 @@ function donate() {
         });
       },
       onReadyForServerCompletion: function(paymentId, txid) {
-        alert(txid)
         console.log({paymentId, txid})
         axiosClient.post(`/payments/${paymentId}/complete`, {
           txid: txid
