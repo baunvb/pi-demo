@@ -46,7 +46,6 @@ function transfer() {
         // Callbacks you need to implement - read more about those in the detailed docs linked below:
         onReadyForServerApproval: function(paymentId) {
           console.log({paymentId})
-          document.getElementById('paymentId').value = paymentId
           axiosClient.post(`/payments/${paymentId}/approve`, {}, config)
           .then(function (response) {
             console.log(response);
@@ -57,8 +56,7 @@ function transfer() {
         },
         onReadyForServerCompletion: function(paymentId, txid) {
           console.log({paymentId, txid})
-          document.getElementById('paymentId').value = paymentId
-          document.getElementById('txid').value = txid
+
           axiosClient.post(`/payments/${paymentId}/complete`, {
             txid: txid
           })
