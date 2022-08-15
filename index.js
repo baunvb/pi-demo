@@ -116,6 +116,25 @@ function onScanError(errorMessage) {
 var html5QrcodeScanner = new Html5QrcodeScanner(
 "reader", { fps: 10, qrbox: {width: 250, height: 250} });
 
+function addCloseIcon() {
+  //remove icon info
+  var imgElement = document.querySelector('img[alt="Info icon"]')
+  imgElement.style.display = 'none'
+
+  var btn = document.createElement('button')
+  btn.type = 'button'
+  btn.className = 'btn-close'
+
+  btn.addEventListener('click', function () {
+    html5QrcodeScanner.clear()
+  })
+
+  document.getElementById('reader').appendChild(btn)
+
+
+}
+
 function startScan() {
   html5QrcodeScanner.render(onScanSuccess, onScanError);
+  addCloseIcon()
 }

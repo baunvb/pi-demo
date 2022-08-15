@@ -336,6 +336,12 @@ button{
 #reader {
     margin-top: 20px;
 }
+.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
 @media only screen and (max-width: 419px) {
     .header{
         justify-content: center;
