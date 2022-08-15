@@ -333,7 +333,9 @@ button{
 #amount-warning {
     margin-top: 8px;
 }
-
+#reader {
+    margin-top: 20px;
+}
 @media only screen and (max-width: 419px) {
     .header{
         justify-content: center;

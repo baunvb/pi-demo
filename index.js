@@ -75,7 +75,6 @@ function transfer() {
       });
 }
 
-
 function showWarning() {
   var addressWarning = document.getElementById("address-warning")
   var amountWarning = document.getElementById("amount-warning")
@@ -111,6 +110,7 @@ function onScanSuccess(decodedText, decodedResult) {
 
 function onScanError(errorMessage) {
   // handle on error condition, with error message
+  console.log("Error", errorMessage)
 }
 
 var html5QrcodeScanner = new Html5QrcodeScanner(
