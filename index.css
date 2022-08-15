@@ -118,11 +118,11 @@ body {
 }
 
 .header-bridge-docs>span>a{
-    text-decoration: none;
+    text-decoration: underline;
     color: #0557aa;
 }
 
-
+/* 
 .header-bridge-docs>span>a::before{
     position: absolute;
     content: "";
@@ -130,7 +130,7 @@ body {
     height: 1px;
     bottom: 0;
     background-color: #0557aa;
-}
+} */
 
 .content-swap {
     display: flex;
