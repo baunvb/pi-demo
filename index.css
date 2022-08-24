@@ -215,7 +215,7 @@ body {
     border: 1px solid #3809A2;
 }
 
- .address-input {
+.address-input {
     display: block;
     font-size: 20px!important;
 }
@@ -378,5 +378,8 @@ button{
     .footer>span{
         font-size: 14px;
     }
+    .address-input::placeholder {
+        font-size: 14px;
+    }    
 
 }
