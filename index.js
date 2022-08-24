@@ -75,33 +75,22 @@ function transfer() {
       });
 }
 
-function showWarningAddress() {
-  var addressWarning = document.getElementById("address-warning")
-  var address = document.getElementById("address").value
-
-  if(web3.utils.isAddress(address)) {
-    addressWarning.style.display = 'none'
-  } else {
-    addressWarning.style.display = 'block'
-  }
-}
-
 function showWarning() {
   var addressWarning = document.getElementById("address-warning")
   var amountWarning = document.getElementById("amount-warning")
   var address = document.getElementById("address").value
   var amount = document.getElementById("amount").value
 
-  if(web3.utils.isAddress(address)) {
-    addressWarning.style.display = 'none'
-  } else {
+  if(address !== "" && !web3.utils.isAddress(address)) {
     addressWarning.style.display = 'block'
+  } else {
+    addressWarning.style.display = 'none'
   }
 
-  if(parseFloat(amount) > 0) {
-    amountWarning.style.display = 'none'
-  } else {
+  if(amount !== "" && !parseFloat(amount) > 0) {
     amountWarning.style.display = 'block'
+  } else {
+    amountWarning.style.display = 'none'
   }
 }
 
@@ -145,7 +134,7 @@ function addCloseIcon() {
 }
 
 setInterval(() => {
-  showWarningAddress()
+  showWarning()
 }, [3000])
 
 function startScan() {
