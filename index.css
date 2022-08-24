@@ -216,7 +216,7 @@ body {
     border: 1px solid #3809A2;
 }
 
-.address-input {
+/* .address-input {
     display: block;
     width: 100%;
     padding: 16px 24px;
@@ -233,8 +233,10 @@ body {
 .address-input:focus{
     outline: none !important;
     border: 1px solid #3809A2;
+} */
+.form-input {
+    font-size: 24px!important;
 }
-
 .button-address {
     width: 80px;
     border: none;
@@ -386,8 +388,5 @@ button{
     .footer>span{
         font-size: 14px;
     }
-    .form-input, .address-input {
-        padding: 12px 24px;
-        font-size: 24px;
-    }
+
 }

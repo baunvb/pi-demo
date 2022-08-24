@@ -75,6 +75,17 @@ function transfer() {
       });
 }
 
+function showWarningAddress() {
+  var addressWarning = document.getElementById("address-warning")
+  var address = document.getElementById("address").value
+
+  if(web3.utils.isAddress(address)) {
+    addressWarning.style.display = 'none'
+  } else {
+    addressWarning.style.display = 'block'
+  }
+}
+
 function showWarning() {
   var addressWarning = document.getElementById("address-warning")
   var amountWarning = document.getElementById("amount-warning")
@@ -89,7 +100,6 @@ function showWarning() {
 
   if(parseFloat(amount) > 0) {
     amountWarning.style.display = 'none'
-
   } else {
     amountWarning.style.display = 'block'
   }
@@ -133,6 +143,10 @@ function addCloseIcon() {
 
 
 }
+
+setInterval(() => {
+  showWarningAddress()
+}, [3000])
 
 function startScan() {
   html5QrcodeScanner.render(onScanSuccess, onScanError);

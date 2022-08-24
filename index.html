@@ -10,8 +10,6 @@
     <link rel="manifest" href="logo/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
     <meta name="description" content="Web site created PiBrigde@2022" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
 
     <title>Pi Bridge</title>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
@@ -35,7 +33,7 @@
     <div class="header text-center">
         <div class="logo">
             <img src="image/PiBridge_logo.png" />
-            <span>Pi Network Bridge</span>
+            <span>PI Network Bridge</span>
         </div>
         <div class="header-right">
            <span> <a href="" target="_blank">Documentation</a></span>
@@ -52,16 +50,16 @@
         <div class="content-swap">
             <div class="swap-form">
                 <div class="input-pi">
-                    <label for="amount" class="swap-label">Transfer PI</label>
+                    <label for="amount" class="swap-label">PI Amount</label>
                     <input value="0" type="text" class="form-input" id="amount" placeholder="0.0" onchange="showWarning()">
                     <span style="display: none;" id="amount-warning" class="text-danger fs-6">Amount must be greater
                         than 0</span>
 
                 </div>
 
-                <label for="address" class="swap-label">Address on Binance Smart Chain</label>
+                <label for="address" class="swap-label">Recipient Address</label>
                 <div class="input-address">
-                    <input type="text" class="form-input address-input" id="address" placeholder="0xAa213g...3UG"
+                    <input type="text" class="form-input address-input" id="address" placeholder="Enter BSC's Recipient Address"
                         onchange="showWarning()">
                     <button class="button-address" type="button" onclick="paste()">
                         <span>
