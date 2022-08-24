@@ -379,7 +379,7 @@ button{
         font-size: 14px;
     }
     .address-input::placeholder {
-        font-size: 14px;
+        font-size: 12px;
     }    
 
 }
